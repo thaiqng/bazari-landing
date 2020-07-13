@@ -1,0 +1,52 @@
+services:
+- source: /runtime/services/tables.yml
+  client_config: {}
+  server_config: {auto_create_missing_columns: false}
+- source: /runtime/services/anvil/users.yml
+  client_config: {require_secure_passwords: true, use_email: true, allow_remember_me: true,
+    allow_signup: false, enable_automatically: false, confirm_email: false, remember_me_days: 30,
+    use_google: true, use_facebook: true}
+  server_config: {user_table: users}
+- source: /runtime/services/anvil/email.yml
+  client_config: {}
+  server_config: {}
+- source: /runtime/services/google.yml
+  client_config: {}
+  server_config: {}
+- source: /runtime/services/facebook.yml
+  client_config: {}
+  server_config: {}
+package_name: bazari_landing
+allow_embedding: false
+name: bazari-landing
+runtime_options: {version: 2, client_version: '3', server_version: python3-sandbox}
+metadata: {title: bazari., description: Revende miles de productos y gana dinero sin ninguna inversión.,
+  logo_img: 'asset:bazari-logo-favicon.png'}
+startup_form: Landing
+native_deps: {head_html: ''}
+db_schema:
+- name: Pictures
+  id: 62344
+  python_name: pictures
+  columns:
+    +onDy6KUmwY=:
+      name: picture
+      type: media
+      admin_ui: {order: 0, width: 200}
+  access: {python_name: pictures, app_id: 7VZGRGO2FFSDNAGF, server: full, client: none,
+    table_id: 62344}
+- name: Users
+  id: 61873
+  python_name: users
+  columns:
+    B+j4ZTLyGA0=:
+      name: email
+      type: string
+      admin_ui: {order: 0, width: 200}
+    Yu_DszW5vXs=:
+      name: enabled
+      type: bool
+      admin_ui: {order: 1, width: 100}
+  access: {python_name: users, app_id: 7VZGRGO2FFSDNAGF, server: full, client: none,
+    table_id: 61873}
+renamed: true
